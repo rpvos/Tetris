@@ -18,7 +18,8 @@ public class SpriteSlicer {
             int counter = 1;
             for (int x = 0; x < image.getWidth() / TILESIZE; x++) {
                 for (int y = 0; y < image.getHeight() / TILESIZE; y++) {
-                    this.images.put(counter,image.getSubimage(x,y,TILESIZE,TILESIZE));
+                    this.images.put(counter,image.getSubimage(x*TILESIZE,y*TILESIZE,TILESIZE,TILESIZE));
+                    counter++;
                 }
             }
         } catch (IOException e) {

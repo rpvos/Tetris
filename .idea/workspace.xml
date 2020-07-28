@@ -7,13 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f829e8ab-625f-4dfe-85be-4d4c4b4ef3ba" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tetris/Field/Field.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tetris/Field/Field.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tetris/Utils/OnOffTimer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tetris/Utils/Timer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tetris/Utils/Timer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Field/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Field/Field.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/OnOffTimer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Timer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Timer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/spritesheet.pdn" beforeDir="false" afterPath="$PROJECT_DIR$/res/spritesheet.pdn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/spritesheet.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/spritesheet.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Apperance/SpriteSlicer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Apperance/SpriteSlicer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,14 +36,40 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Field/Field.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
-              <caret line="59" column="53" selection-start-line="59" selection-start-column="53" selection-end-line="59" selection-end-column="53" />
+              <caret line="59" column="53" lean-forward="true" selection-start-line="59" selection-start-column="53" selection-end-line="59" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#5397#5398#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Pieces/Square.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="595">
+              <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#964#965#0" expanded="true" />
+                <element signature="e#1032#1033#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Apperance/SpriteSlicer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="292">
+              <caret line="22" column="17" lean-forward="true" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -83,7 +105,6 @@
         <option value="$PROJECT_DIR$/src/Pieces/FivePieces/Piece8.java" />
         <option value="$PROJECT_DIR$/src/Apperance/Colors.java" />
         <option value="$PROJECT_DIR$/src/Utils/ScoreCallBack.java" />
-        <option value="$PROJECT_DIR$/src/Apperance/SpriteSlicer.java" />
         <option value="$PROJECT_DIR$/src/Apperance/Window.java" />
         <option value="$PROJECT_DIR$/src/Pieces/Piece3.java" />
         <option value="$PROJECT_DIR$/src/Pieces/Piece.java" />
@@ -99,6 +120,7 @@
         <option value="$PROJECT_DIR$/src/Utils/OnOffTimer.java" />
         <option value="$PROJECT_DIR$/src/Utils/Timer.java" />
         <option value="$PROJECT_DIR$/src/Field/Field.java" />
+        <option value="$PROJECT_DIR$/src/Apperance/SpriteSlicer.java" />
       </list>
     </option>
   </component>
@@ -320,21 +342,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/spritesheet.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Apperance/SpriteSlicer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="30" column="42" lean-forward="true" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1076#1077#0" expanded="true" />
-            <element signature="e#1103#1104#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Apperance/Window.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="952">
@@ -444,18 +451,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pieces/Square.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#964#965#0" expanded="true" />
-            <element signature="e#1032#1033#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Utils/Timer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -490,13 +485,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/res/spritesheet.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Field/Field.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
-          <caret line="59" column="53" selection-start-line="59" selection-start-column="53" selection-end-line="59" selection-end-column="53" />
+          <caret line="59" column="53" lean-forward="true" selection-start-line="59" selection-start-column="53" selection-end-line="59" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5397#5398#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pieces/Square.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#964#965#0" expanded="true" />
+            <element signature="e#1032#1033#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Apperance/SpriteSlicer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="22" column="17" lean-forward="true" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
