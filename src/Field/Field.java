@@ -9,7 +9,6 @@ import org.jfree.fx.FXGraphics2D;
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Random;
 
 public class Field {
@@ -23,13 +22,14 @@ public class Field {
 
     private Timer speedTimer;
 
-    private boolean aActive;
-    private boolean sActive;
-    private boolean dActive;
+    private Timer aPressedTimer;
+    private Timer sPressedTimer;
+    private Timer dPressedTimer;
     private boolean rotateActive;
 
     private Square[][] field;
     private Piece current;
+    private boolean isAlive;
 
     public Field(KeyListener keyListener, ScoreCallBack scoreCallBack) {
         this.field = new Square[10][40];
@@ -37,10 +37,11 @@ public class Field {
         this.keylistener = keyListener;
         this.scoreCallback = scoreCallBack;
         this.rotateActive = false;
-        this.aActive = false;
-        this.sActive = false;
-        this.dActive = false;
+        this.aPressedTimer = new Timer(300);
+        this.dPressedTimer = new Timer(300);
+        this.sPressedTimer = new Timer(200);
         this.random = new Random();
+        this.isAlive = true;
         clearField();
     }
 
@@ -56,9 +57,9 @@ public class Field {
         for (int x = 0; x < WIDTH; x++) {
             for (int y = 0; y < HEIGHT; y++) {
                 if (field[x][y] != null) {
-//                    field[x][y].draw(graphics, SIZE);todo here it goes wrong
-                    graphics.setColor(field[x][y].getColor());
-                    graphics.fillRect(x * SIZE, y * SIZE, SIZE, SIZE);
+                    field[x][y].draw(graphics, SIZE);
+//                    graphics.setColor(field[x][y].getColor());
+//                    graphics.fillRect(x * SIZE, y * SIZE, SIZE, SIZE);
                 } else {
                     graphics.setColor(Color.white);
                     graphics.drawRect(x * SIZE, y * SIZE, SIZE, SIZE);
@@ -79,6 +80,9 @@ public class Field {
 
 
     public void update(double deltatime) {
+        if (!isAlive)
+            return;
+
         if (current == null)
             current = getPiece();
 
@@ -90,28 +94,32 @@ public class Field {
         if (current != null) {
             if (keylistener.getInputs().
                     contains("A")) {
-                if (!aActive)
+                if (aPressedTimer.timeout()) {
                     current.moveLeft();
-                aActive = true;
+                    aPressedTimer.mark();
+                }
             } else
-                aActive = false;
+                aPressedTimer.setTimeout();
 
-            //todo make it go down
+
             if (keylistener.getInputs().
                     contains("S")) {
-                if (!sActive)
+                if (sPressedTimer.timeout()) {
                     current.moveDown();
-                sActive = true;
+                    sPressedTimer.mark();
+                }
             } else
-                sActive = false;
+                sPressedTimer.setTimeout();
+
 
             if (keylistener.getInputs().
                     contains("D")) {
-                if (!dActive)
+                if (dPressedTimer.timeout()) {
                     current.moveRight();
-                dActive = true;
+                    dPressedTimer.mark();
+                }
             } else
-                dActive = false;
+                dPressedTimer.setTimeout();
 
 
             if (keylistener.getInputs().
@@ -180,6 +188,12 @@ public class Field {
                 }
             }
 
+            for (int x = 0; x < WIDTH; x++) {
+                if (field[x][1] != null) {
+                    isAlive = false;
+                }
+            }
+
             current = null;
         }
     }
@@ -193,12 +207,13 @@ public class Field {
         while (y > 0) {
             //move row
             for (int x = 0; x < WIDTH; x++) {
-                field[x][y] = field[x][y - 1];
+                if (field[x][y - 1] != null) {
+                    field[x][y] = field[x][y - 1];
+                    field[x][y].moveDown();
+                    field[x][y - 1] = null;
+                }
             }
-            //delete old location row
-            for (int x = 0; x < WIDTH; x++) {
-                field[x][y - 1] = null;
-            }
+
             //move one row up
             y--;
         }

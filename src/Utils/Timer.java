@@ -27,4 +27,8 @@ public class Timer {
         this.interval = interval;
         this.lasttick = System.currentTimeMillis();
     }
+
+    public void setTimeout(){
+        this.lasttick = this.interval;
+    }
 }
