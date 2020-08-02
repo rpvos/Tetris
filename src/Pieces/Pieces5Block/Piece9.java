@@ -1,7 +1,9 @@
-package Pieces;
+package Pieces.Pieces5Block;
 
 import Apperance.Colors;
 import Field.Field;
+import Pieces.General.Piece;
+import Pieces.General.Square;
 
 import java.awt.*;
 import java.awt.geom.Point2D;

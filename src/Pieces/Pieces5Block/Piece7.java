@@ -1,6 +1,8 @@
-package Pieces;
+package Pieces.Pieces5Block;
 
 import Field.Field;
+import Pieces.General.Piece;
+import Pieces.General.Square;
 
 import java.awt.*;
 import java.awt.geom.Point2D;

@@ -1,4 +1,4 @@
-package Pieces;
+package Pieces.General;
 
 import Apperance.SpriteSlicer;
 import org.jfree.fx.FXGraphics2D;

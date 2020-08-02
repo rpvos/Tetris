@@ -1,6 +1,8 @@
 package Field;
 
-import Pieces.*;
+import Pieces.General.Piece;
+import Pieces.General.Square;
+import Pieces.Pieces5Block.*;
 import Utils.KeyListener;
 import Utils.ScoreCallBack;
 import Utils.Timer;
@@ -8,6 +10,7 @@ import org.jfree.fx.FXGraphics2D;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -15,7 +18,7 @@ public class Field {
     private static final int WIDTH = 10;
     private static final int HEIGHT = 20;
     private static final int SIZE = 32;
-    private static final int AMOUNT_OF_PIECES = 9;
+    private final int AMOUNT_OF_PIECES;
     private final KeyListener keylistener;
     private final ScoreCallBack scoreCallback;
     private Random random;
@@ -28,10 +31,13 @@ public class Field {
     private boolean rotateActive;
 
     private Square[][] field;
-    private Piece current;
+    private Piece nextPiece;
+    private Piece currentPiece;
     private boolean isAlive;
 
     public Field(KeyListener keyListener, ScoreCallBack scoreCallBack) {
+        this.AMOUNT_OF_PIECES = new File("src/Pieces/Pieces5Block").listFiles().length;
+
         this.field = new Square[10][40];
         this.speedTimer = new Timer(1000);
         this.keylistener = keyListener;
@@ -67,14 +73,14 @@ public class Field {
             }
         }
 
-        if (current != null) {
-            current.draw(graphics, SIZE);
-//            graphics.setColor(current.getPos1().getColor());
-//            graphics.fillRect((int) current.getPos1().getPos().getX() * SIZE, (int) current.getPos1().getPos().getY() * SIZE, SIZE, SIZE);
-//            graphics.fillRect((int) current.getPos2().getPos().getX() * SIZE, (int) current.getPos2().getPos().getY() * SIZE, SIZE, SIZE);
-//            graphics.fillRect((int) current.getPos3().getPos().getX() * SIZE, (int) current.getPos3().getPos().getY() * SIZE, SIZE, SIZE);
-//            graphics.fillRect((int) current.getPos4().getPos().getX() * SIZE, (int) current.getPos4().getPos().getY() * SIZE, SIZE, SIZE);
-//            graphics.fillRect((int) current.getPos5().getPos().getX() * SIZE, (int) current.getPos5().getPos().getY() * SIZE, SIZE, SIZE);
+        if (currentPiece != null) {
+            currentPiece.draw(graphics, SIZE);
+//            graphics.setColor(currentPiece.getPos1().getColor());
+//            graphics.fillRect((int) currentPiece.getPos1().getPos().getX() * SIZE, (int) currentPiece.getPos1().getPos().getY() * SIZE, SIZE, SIZE);
+//            graphics.fillRect((int) currentPiece.getPos2().getPos().getX() * SIZE, (int) currentPiece.getPos2().getPos().getY() * SIZE, SIZE, SIZE);
+//            graphics.fillRect((int) currentPiece.getPos3().getPos().getX() * SIZE, (int) currentPiece.getPos3().getPos().getY() * SIZE, SIZE, SIZE);
+//            graphics.fillRect((int) currentPiece.getPos4().getPos().getX() * SIZE, (int) currentPiece.getPos4().getPos().getY() * SIZE, SIZE, SIZE);
+//            graphics.fillRect((int) currentPiece.getPos5().getPos().getX() * SIZE, (int) currentPiece.getPos5().getPos().getY() * SIZE, SIZE, SIZE);
         }
     }
 
@@ -83,19 +89,19 @@ public class Field {
         if (!isAlive)
             return;
 
-        if (current == null)
-            current = getPiece();
+        if (currentPiece == null)
+            currentPiece = getPiece();
 
         if (speedTimer.timeout()) {
             checkLock();
             speedTimer.mark();
         }
 
-        if (current != null) {
+        if (currentPiece != null) {
             if (keylistener.getInputs().
                     contains("A")) {
                 if (aPressedTimer.timeout()) {
-                    current.moveLeft();
+                    currentPiece.moveLeft();
                     aPressedTimer.mark();
                 }
             } else
@@ -105,7 +111,7 @@ public class Field {
             if (keylistener.getInputs().
                     contains("S")) {
                 if (sPressedTimer.timeout()) {
-                    current.moveDown();
+                    currentPiece.moveDown();
                     sPressedTimer.mark();
                 }
             } else
@@ -115,7 +121,7 @@ public class Field {
             if (keylistener.getInputs().
                     contains("D")) {
                 if (dPressedTimer.timeout()) {
-                    current.moveRight();
+                    currentPiece.moveRight();
                     dPressedTimer.mark();
                 }
             } else
@@ -125,7 +131,7 @@ public class Field {
             if (keylistener.getInputs().
                     contains("R")) {
                 if (!rotateActive)
-                    current.rotate();
+                    currentPiece.rotate();
                 rotateActive = true;
             } else
                 rotateActive = false;
@@ -166,12 +172,12 @@ public class Field {
 
     //todo make a way to die
     private void checkLock() {
-        if (!current.moveDown()) {
-            lockIn(current.getPos1());
-            lockIn(current.getPos2());
-            lockIn(current.getPos3());
-            lockIn(current.getPos4());
-            lockIn(current.getPos5());
+        if (!currentPiece.moveDown()) {
+            lockIn(currentPiece.getPos1());
+            lockIn(currentPiece.getPos2());
+            lockIn(currentPiece.getPos3());
+            lockIn(currentPiece.getPos4());
+            lockIn(currentPiece.getPos5());
             scoreCallback.scoreUpdate(1);
 
             //check if a row is filled
@@ -194,7 +200,7 @@ public class Field {
                 }
             }
 
-            current = null;
+            currentPiece = null;
         }
     }
 

@@ -1,22 +1,20 @@
-package Pieces;
+package Pieces.General;
 
-import Apperance.SpriteSlicer;
 import Field.Field;
 import org.jfree.fx.FXGraphics2D;
 
 import java.awt.geom.Point2D;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 
 public abstract class Piece {
-    Square pos1;
-    Square pos2;
-    Square pos3;
-    Square pos4;
-    Square pos5;
+    protected Square pos1;
+    protected Square pos2;
+    protected Square pos3;
+    protected Square pos4;
+    protected Square pos5;
     private Field field;
-    int rotations;
+    protected int rotations;
 
     public Piece(Square pos1, Square pos2, Square pos3, Square pos4, Square pos5, Field field) {
         this.pos1 = pos1;

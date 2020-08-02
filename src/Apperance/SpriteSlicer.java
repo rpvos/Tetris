@@ -16,8 +16,8 @@ public class SpriteSlicer {
         try {
             BufferedImage image = ImageIO.read(getClass().getClassLoader().getResource("spritesheet.png"));
             int counter = 1;
-            for (int x = 0; x < image.getWidth() / TILESIZE; x++) {
                 for (int y = 0; y < image.getHeight() / TILESIZE; y++) {
+                    for (int x = 0; x < image.getWidth() / TILESIZE; x++) {
                     this.images.put(counter,image.getSubimage(x*TILESIZE,y*TILESIZE,TILESIZE,TILESIZE));
                     counter++;
                 }
