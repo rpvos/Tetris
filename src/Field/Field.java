@@ -15,7 +15,7 @@ public class Field {
     private static final int WIDTH = 10;
     private static final int HEIGHT = 20;
     private static final int SIZE = 32;
-    private static final int AMOUNT_OF_PIECES = 6;
+    private static final int AMOUNT_OF_PIECES = 9;
     private final KeyListener keylistener;
     private final ScoreCallBack scoreCallback;
     private Random random;
